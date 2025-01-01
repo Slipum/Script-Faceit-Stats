@@ -1,6 +1,6 @@
 import os
 import requests
-
+import questionary
 
 os.system('cls' if os.name == 'nt' else 'clear')
 
@@ -37,17 +37,22 @@ def main():
             print('k/d:', '%.2f' % (kd))
             print('k/r:', '%.2f' % (kr))
             print('hs:', hs)
+            # Выбор между выходом и повторным исполнением
+            answer = questionary.select(
+                "Choose an action:",
+                choices=[
+                    "Exit the application",
+                    "Get another player's stats"
+                ]
+            ).ask()
+            if answer == "Get another player's stats":
+                os.system('cls' if os.name == 'nt' else 'clear')
+                main()
+
         else:
             print(f"Error when retrieving statistics: {new_res.status_code}")
     else:
         print(f"Error: {response.status_code}")
-
-    # Добавляем выбор между выходом и повторным исполнением
-    choice = input(
-        "\nChoose an action:\n1. Exit the application\n2. Get statistics\nYour choice: ")
-    if choice == '2':
-        os.system('cls' if os.name == 'nt' else 'clear')
-        main()
 
 
 if __name__ == "__main__":

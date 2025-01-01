@@ -18,11 +18,12 @@ This script retrieves a **Faceit** player's statistics for **CS2** using their u
 
 1. **os** - standard Python library for interacting with the operating system.
 2. **requests** - for making HTTP requests.
+3. **questionary** - for effortlessly building pretty command line interfaces.
 
-To install the `requests` library, use:
+To install the `requests, questionary` libraries, use:
 
 ```bash
-pip install requests
+pip install requests questionary
 ```
 
 ---
@@ -69,6 +70,7 @@ pip install requests
 
 ```
 Enter faceit username: test_user
+
 test_user
 elo: 1234
 lvl: 7
@@ -76,10 +78,9 @@ avg: 68.7
 k/d: 1.12
 k/r: 0.83
 hs: 56
-Choose an action:
-1. Exit the application
-2. Get statistics
-Your choice:
+? Choose an action: (Use arrow keys)
+ » Exit the application
+   Get another player's stats
 ```
 
 ---

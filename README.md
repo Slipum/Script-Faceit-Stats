@@ -88,7 +88,7 @@ hs: 56
 ## Possible Improvements
 
 - [ ] **Error handling**: Add more robust error handling (e.g., invalid username input or network issues).
-- [ ] **Formatting**: Use libraries like `prettytable` for a cleaner display of data.
+- [ ] **Formatting**: Use libraries for a cleaner display of data.
 - [ ] **Localization**: Support multiple languages (e.g., English, Russian).
 - [ ] **Testing**: Add unit tests to ensure the script handles various scenarios correctly.
 <!-- for example `[X]` is selected Checkbox -->

@@ -2,6 +2,9 @@ import os
 import requests
 
 
+os.system('cls' if os.name == 'nt' else 'clear')
+
+
 def main():
     c = str(input('Enter faceit username: '))
     response = requests.get(

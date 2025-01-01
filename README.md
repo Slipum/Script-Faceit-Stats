@@ -10,7 +10,7 @@ Download pre-built executables for **Linux** and **Windows** from the [Releases 
 
 This script retrieves a **Faceit** player's statistics for **CS2** using their username. Users provide a Faceit nickname, and the script queries the Faceit API to fetch and display relevant statistics.
 
-<img src='./assets/exp.gif' alt='gif' />
+![](./assets/exp.gif)
 
 ---
 

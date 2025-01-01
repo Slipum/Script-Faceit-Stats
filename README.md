@@ -93,4 +93,4 @@ Your choice:
 
 ---
 
-Feel free to suggest additional features or improvements by creating an issue or pull request!
+Feel free to suggest additional features or improvements by creating an issue[issue](https://github.com/Slipum/Script-Faceit-Stats/issues) or [pull](https://github.com/Slipum/Script-Faceit-Stats/pulls) request!

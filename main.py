@@ -35,9 +35,9 @@ def main():
             print('k/r:', '%.2f' % (kr))
             print('hs:', hs)
         else:
-            print(f"Ошибка при получении статистики: {new_res.status_code}")
+            print(f"Error when retrieving statistics: {new_res.status_code}")
     else:
-        print(f"Ошибка: {response.status_code}")
+        print(f"Error: {response.status_code}")
 
     # Добавляем выбор между выходом и повторным исполнением
     choice = input(

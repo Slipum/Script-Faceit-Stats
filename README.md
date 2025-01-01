@@ -90,6 +90,7 @@ Your choice:
 - [ ] **Formatting**: Use libraries like `prettytable` for a cleaner display of data.
 - [ ] **Localization**: Support multiple languages (e.g., English, Russian).
 - [ ] **Testing**: Add unit tests to ensure the script handles various scenarios correctly.
+<!-- for example `[X]` is selected Checkbox -->
 
 ---
 

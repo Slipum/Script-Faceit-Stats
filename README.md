@@ -1,21 +1,26 @@
 # Faceit Player Statistics Script
 
 ## Releases
-Download pre-built executables for **Linux** and **Windows** from the [Releases page](https://github.com/your-username/your-repo-name/releases).
+
+Download pre-built executables for **Linux** and **Windows** from the [Releases page](https://github.com/Slipum/Script-Faceit-Stats/releases).
 
 ---
 
 ## Description
+
 This script retrieves a **Faceit** player's statistics for **CS2** using their username. Users provide a Faceit nickname, and the script queries the Faceit API to fetch and display relevant statistics.
 
 ---
 
 ## Requirements
+
 ### Libraries:
+
 1. **os** - standard Python library for interacting with the operating system.
 2. **requests** - for making HTTP requests.
 
 To install the `requests` library, use:
+
 ```bash
 pip install requests
 ```
@@ -23,7 +28,9 @@ pip install requests
 ---
 
 ## Features
+
 ### Main workflow:
+
 1. The user inputs a Faceit username.
 2. The script queries the Faceit API to retrieve the player's ID.
 3. If the ID is found:
@@ -44,6 +51,7 @@ pip install requests
 ---
 
 ## How to Use
+
 1. Save the script as `faceit_stats.py`.
 2. Run the script:
    ```bash
@@ -58,6 +66,7 @@ pip install requests
 ---
 
 ## Example Output
+
 ```
 Enter faceit username: test_user
 test_user
@@ -76,6 +85,7 @@ Your choice:
 ---
 
 ## Possible Improvements
+
 - [ ] **Error handling**: Add more robust error handling (e.g., invalid username input or network issues).
 - [ ] **Formatting**: Use libraries like `prettytable` for a cleaner display of data.
 - [ ] **Localization**: Support multiple languages (e.g., English, Russian).

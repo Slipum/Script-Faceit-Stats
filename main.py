@@ -5,10 +5,10 @@ import questionary
 os.system('cls' if os.name == 'nt' else 'clear')
 
 
-def main():
-    c = str(input('Enter faceit username: '))
+def player(username, k=0):
+    os.system('cls' if os.name == 'nt' else 'clear')
     response = requests.get(
-        'https://www.faceit.com/api/users/v1/nicknames/' + c)
+        'https://www.faceit.com/api/users/v1/nicknames/' + username)
 
     # Проверяем успешность запроса
     if response.status_code == 200:
@@ -30,29 +30,75 @@ def main():
 
             os.system('cls' if os.name == 'nt' else 'clear')
 
-            print(c)
-            print('elo:', data['payload']['games']['cs2']['faceit_elo'])
-            print('lvl:', data['payload']['games']['cs2']['skill_level'])
-            print('avg:', avg)
-            print('k/d:', '%.2f' % (kd))
-            print('k/r:', '%.2f' % (kr))
-            print('hs:', hs)
-            # Выбор между выходом и повторным исполнением
-            answer = questionary.select(
-                "Choose an action:",
-                choices=[
-                    "Exit the application",
-                    "Get another player's stats"
-                ]
-            ).ask()
-            if answer == "Get another player's stats":
-                os.system('cls' if os.name == 'nt' else 'clear')
-                main()
+            res = f"Statistic {username}'s \n\n" \
+                f"{'elo:':<20} {data['payload']['games']['cs2']['faceit_elo']}\n" \
+                  f"{'lvl:':<20} {data['payload']['games']['cs2']['skill_level']}\n" \
+                f"{'avg:':<20} {avg}\n" \
+                f"{'k/d:':<20} {kd:<20.2f}\n" \
+                f"{'k/r:':<20} {kr:<20.2f}\n" \
+                f"{'hs:':<20} {hs}"
+
+            if k == 1:
+                return {
+                    'username': username,
+                    'elo': data['payload']['games']['cs2']['faceit_elo'],
+                    'lvl': data['payload']['games']['cs2']['skill_level'],
+                    'avg': avg,
+                    'kd': kd,
+                    'kr': kr,
+                    'hs': hs
+                }
+            else:
+                return res
 
         else:
-            print(f"Error when retrieving statistics: {new_res.status_code}")
+            questionary.press_any_key_to_continue().ask()
+            return f"Error when retrieving statistics: {new_res.status_code}"
     else:
-        print(f"Error: {response.status_code}")
+        questionary.press_any_key_to_continue().ask()
+        return f"Error: {response.status_code}"
+
+
+def compare_players():
+    os.system('cls' if os.name == 'nt' else 'clear')
+    player1 = str(input('Enter first faceit username: '))
+    player2 = str(input('Enter second faceit username: '))
+
+    stats1 = player(player1, 1)
+    stats2 = player(player2, 1)
+
+    if isinstance(stats1, dict) and isinstance(stats2, dict):
+        comparison = f"Comparison between {player1} and {player2}:\n\n" \
+            f"{'username:':<20} {player1:<20} {player2}\n" \
+            f"{'elo:':<20} {stats1['elo']:<20} {stats2['elo']}\n" \
+            f"{'lvl:':<20} {stats1['lvl']:<20} {stats2['lvl']}\n" \
+            f"{'avg:':<20} {stats1['avg']:<20} {stats2['avg']}\n" \
+            f"{'k/d:':<20} {stats1['kd']:<20.2f} {stats2['kd']:<20.2f}\n" \
+            f"{'k/r:':<20} {stats1['kr']:<20.2f} {stats2['kr']:<20.2f}\n" \
+            f"{'hs:':<20} {stats1['hs']:<20} {stats2['hs']}"
+        return comparison
+    else:
+        return "Error retrieving player statistics."
+
+
+def main():
+    while True:
+        answer = questionary.select(
+            "Choose an action:",
+            choices=[
+                "Get a player's stats",
+                "Compare two players stats",
+                "Exit the application"
+            ]
+        ).ask()
+
+        if answer == "Get a player's stats":
+            username = str(input('Enter faceit username: '))
+            print(player(username, 0))
+        elif answer == "Compare two players stats":
+            print(compare_players())
+        else:
+            break
 
 
 if __name__ == "__main__":
